@@ -1,16 +1,14 @@
 import Header from '@/components/Header'
-import AddDocumentBtn from '@/components/ui/AddDocumentBtn'
-import { Button } from '@/components/ui/button'
+import AddDocumentBtn from '@/components/AddDocumentBtn'
 import { SignedIn, UserButton } from '@clerk/nextjs'
 import { currentUser } from '@clerk/nextjs/server'
 import Image from 'next/image'
+import { redirect } from 'next/navigation'
 import React from 'react'
 
 const Home = async () => {
   const clerkUser = await currentUser();
-  if (!clerkUser) {
-    return <div>Loading...</div>;
-  }
+  if(!clerkUser) redirect('/sign-in');
   const documents = [];
   return (
     <main className='home-container'>
