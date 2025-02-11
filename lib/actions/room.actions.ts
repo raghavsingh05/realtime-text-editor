@@ -46,3 +46,19 @@ export const getDocument = async ({roomId, userId }:{roomId: string; userId:stri
         console.log("Error happened while fetching the room", error);
     }
 }
+
+export const updateDocument = async( roomId: string, title:string)=>{
+    try {
+        const updatedroom = await liveblocks.updateRoom(roomId, {
+            metadata: {
+                title
+            }
+        });
+
+        revalidatePath(`/documents/${roomId}`);
+        return parseStringify(updatedroom);
+    } catch (error) {
+        console.log("Error happened while updating document title", error);
+        
+    }
+}
