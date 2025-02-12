@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation';
 import React from 'react'
 
 const Document = async ({ params }: { params: { id: string } }) => {
-  const { id } = await params; // ✅ Await params before using its properties
+  const { id } = await params; 
 
   const clerkUser = await currentUser();
   if (!clerkUser) redirect('/sign-in');
