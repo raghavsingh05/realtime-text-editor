@@ -8,6 +8,7 @@ import React from 'react'
 import { getDocuments } from '@/lib/actions/room.actions'
 import Link from 'next/link'
 import { dateConverter } from '@/lib/utils'
+import { DeleteModal } from '@/components/DeleteModel'
 
 const Home = async () => {
   const clerkUser = await currentUser();
@@ -54,7 +55,7 @@ const Home = async () => {
                     </p>
                   </div>
                 </Link>
-
+                <DeleteModal roomId={id} />
               </li>
             ))}
           </ul>

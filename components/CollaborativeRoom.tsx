@@ -10,6 +10,7 @@ import { currentUser } from '@clerk/nextjs/server';
 import Image from 'next/image';
 import { updateDocument } from '@/lib/actions/room.actions';
 import Loader from './Loader';
+import ShareModal from './ShareModel';
 
 const CollaborativeRoom = ({roomId, roomMetadata, users, currentUserType }:CollaborativeRoomProps) => {
     const [documentTitle, setDocumentTitle] = useState(roomMetadata.title);
@@ -108,16 +109,15 @@ const CollaborativeRoom = ({roomId, roomMetadata, users, currentUserType }:Colla
 
               {loading && <p className="text-sm text-gray-400">saving...</p>}
             </div>
-            <div className="flex w-full flex-1 justify-end gap-2 sm:gap-3">
+            <div className="flex justify-end gap-2 sm:gap-3">
               <ActiveCollaborators />
 
-              {/* <ShareModal 
+              <ShareModal 
                 roomId={roomId}
                 collaborators={users}
                 creatorId={roomMetadata.creatorId}
                 currentUserType={currentUserType}
-              /> */}
-
+              />
               <SignedOut>
                 <SignInButton />
               </SignedOut>

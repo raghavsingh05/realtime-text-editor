@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid'
 import { liveblocks } from '../liveblocks';
 import { revalidatePath } from 'next/cache';
 import { parseStringify } from '../utils';
+import { redirect } from 'next/navigation';
 
 export const createDoucument = async({userId, email}:
     CreateDocumentParams) => {
@@ -69,5 +70,15 @@ export const getDocuments = async (email:string) =>{
         return parseStringify(rooms);
     } catch (error) {
         console.log("Error happened while fetching the rooms", error);
+    }
+}
+
+export const deleteDocument = async (roomId:string)=>{
+    try {
+        await liveblocks.deleteRoom(roomId);
+        revalidatePath('/');
+        redirect('/')
+    } catch (error) {
+        console.log(`Error encountered while deleting the room: ${error}`)
     }
 }
