@@ -23,7 +23,7 @@ const AddDocumentBtn = ({ userId, email }: AddDocumentBtnProps) => {
         <Button type='submit' onClick={addDocumentHandler}
             className='gradient-blue flex gap-1 shadow-md'>
             <Image src='/assets/icons/add.svg' alt='add' width={24} height={24} />
-            <p className='hidden sm:block'>Click here to add your first document</p>
+            <p className='hidden sm:block'>Click here to add a new blog</p>
         </Button>
 
     )

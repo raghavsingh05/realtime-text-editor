@@ -9,6 +9,7 @@ import { getDocuments } from '@/lib/actions/room.actions'
 import Link from 'next/link'
 import { dateConverter } from '@/lib/utils'
 import { DeleteModal } from '@/components/DeleteModel'
+import Notificaiton from '@/components/Notificaiton'
 
 const Home = async () => {
   const clerkUser = await currentUser();
@@ -17,8 +18,8 @@ const Home = async () => {
   return (
     <main className='home-container'>
       <Header className='sticky left-0 top-0'>
-        <div className='fext items-center gap-2 lg:gap-4'>
-          Notification
+        <div className='flex items-center gap-2 lg:gap-4'>
+          <Notificaiton />
           <SignedIn>
             <UserButton />
           </SignedIn>
