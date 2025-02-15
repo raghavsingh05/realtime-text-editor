@@ -1,9 +1,8 @@
 'use client';
 
-import { ReactNode, use } from "react";
+import { ReactNode } from "react";
 import {
     LiveblocksProvider,
-    RoomProvider,
     ClientSideSuspense,
 } from "@liveblocks/react/suspense";
 import Loader from "@/components/Loader";
@@ -22,7 +21,7 @@ const Provider = ({ children }: { children: ReactNode }) => {
             resolveMentionSuggestions={ async ({ text, roomId})=>{
                 const roomUsers = await getDocumentUsers({
                     roomId,
-                    currentUser: clerkUser?.emailAddresses[0].emailAddress!,
+                    currentUser: clerkUser?.emailAddresses[0].emailAddress || '',
                     text,
                 })
 
