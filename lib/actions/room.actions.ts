@@ -108,7 +108,7 @@ export const updateDocumentAccess = async ({ roomId, email, userType, updatedBy}
       }
 }
 
-export const removeCOllaborator = async ({ roomId, email}:{roomId: string, email:string} ) =>{
+export const removeCollaborator = async ({ roomId, email}:{roomId: string, email:string} ) =>{
     try {
         const room = await liveblocks.getRoom(roomId)
         if(room.metadata.email === email){
